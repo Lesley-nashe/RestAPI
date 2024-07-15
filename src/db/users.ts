@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
     username: {type: String, required: true},
     email: {type: String, required: true},
     authentication: {
@@ -10,20 +10,19 @@ const UserSchema = new Schema({
     },
 })
 
-export const UserModal  = mongoose.model('User', UserSchema);
+export const UserModel  = mongoose.model('User', UserSchema);
 
-export const getUsers = () => UserModal.find();
+export const getUsers = () => UserModel.find();
 
-export const getUsersByEmail = (email: String) => UserModal.findOne({ email });
+export const getUsersByEmail = (email: string) => UserModel.findOne({ email });
 
-export const getUsersBySessionToken = (sessionToken: String) => UserModal.findOne({
+export const getUsersBySessionToken = (sessionToken: String) => UserModel.findOne({
     'authentication.sessionToken' : sessionToken,
 })
+export const getUserById  = (id: string) => UserModel.findOne({id});
 
-export const getUserById  = (Id: String) => UserModal.findOne(Id);
-export const creatUser = (values: Record<string, any>) => new UserModal(values).save().then((
-    user) => user.toObject());
+export const creatUser = (values: Record<string, any>) => new UserModel(values).save().then((user) => user.toObject());
 
-export const deleteUser = (Id: String) => UserModal.findByIdAndDelete({ _Id: Id});
+export const deleteUserById = (id: string) => UserModel.findByIdAndDelete({ _id: id});
 
-export const updateUser = (Id: String, values: Record<string, any> ) => UserModal.findByIdAndUpdate({Id, values});
+export const updateUser = (id: string, values: Record<string, any> ) => UserModel.findByIdAndUpdate({id, values});
