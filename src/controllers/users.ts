@@ -33,15 +33,9 @@ export const UpdateUser = async (req: express.Request, res: express.Response) =>
     try {
         const { id } = req.params;
 
-        console.log(id)
-
         const {username} = req.body;
 
-        console.log(username);
-
         const user = await getUserById(id);
-
-        console.log(user)
 
         user.username = username;
 

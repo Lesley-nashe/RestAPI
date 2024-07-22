@@ -29,7 +29,7 @@ export const login = async (req: express.Request, res: express.Response) =>{
 
         res.cookie('TADIWA-AUTH', user.authentication.sessionToken, {domain: 'localhost', path: '/'})
 
-        return res.status(200).json(user).end();
+        return res.status(200).json({ user: user }).end();
         
     } catch (error) {
         console.log(error)
