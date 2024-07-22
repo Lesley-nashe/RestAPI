@@ -8,6 +8,6 @@ export default (router: express.Router) => {
     router.post('/product', isAuthenticated, create_Product )
     router.get('/products', isAuthenticated, getAllProducts);
     router.get('/product/:id', isAuthenticated, getProduct)
-    router.delete('/products/:id', isAuthenticated, deleteProduct);
-    router.patch('/products/:id', isAuthenticated, updateProduct);
+    router.delete('/product/:id', isAuthenticated, deleteProduct);
+    router.patch('/product/:id', isAuthenticated, updateProduct);
 };
