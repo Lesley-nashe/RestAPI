@@ -1,7 +1,7 @@
 import express from 'express'
 
 import { getProduct, getAllProducts, create_Product, deleteProduct, updateProduct} from '../controllers/products'
-import { isAuthenticated, isOwner } from '../middleware';
+import { isAuthenticated } from '../middleware';
 
 
 export default (router: express.Router) => {
